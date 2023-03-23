@@ -22,15 +22,13 @@ function showPokemon(pokemon) {
             </article>`;
   document.querySelector("#pokemon").insertAdjacentHTML("beforeend", pokemonHTML);
 
-  document.querySelector("#pokemon article:last-child").addEventListener("click", pokemonMondal);
-}
-
-function pokemonMondal() {
-  document.querySelector("#pokemonDetails").showModal();
-  const detailHTML = /*html*/ `
-    <h1>${pokemon.name}</h1>
-<img src="${pokemon.image}"></li>
-<h3><i>"${pokemon.description}"</i></h3>
+  function pokemonClicked() {
+    document.querySelector("#pokemonDetails").showModal();
+    document.querySelector("#pokemonDetails").textContent = pokemon.name;
+    const detailHTML = /*html*/ `
+  <h1>${pokemon.name}</h1>
+  <img src="${pokemon.image}"></li>
+  <h3><i>"${pokemon.description}"</i></h3>
   <li><img src=${pokemon.image}></li>
   <li>Footprint: <img src=${pokemon.footprint}></li>
   <li>Name: ${pokemon.name}</li> 
@@ -54,5 +52,7 @@ function pokemonMondal() {
   <form method="dialog">
 		<button>Close</button>
 </form>`;
-  document.querySelector("#pokemonFacts").insertAdjacentHTML("beforeend", detailHTML);
+    document.querySelector("#pokemonFacts").insertAdjacentHTML("beforeend", detailHTML);
+  }
+  document.querySelector("#pokemon article:last-child").addEventListener("click", pokemonClicked);
 }

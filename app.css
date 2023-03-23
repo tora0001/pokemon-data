@@ -2,7 +2,7 @@ html {
   color: var(--text-color-dark);
   font-family: var(--font-family);
   height: 100%;
-  width: 100%;
+  width: 150%;
 }
 
 body {
@@ -11,7 +11,7 @@ body {
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 3em;
   font-weight: 500;
   letter-spacing: 0.1px;
   text-align: center;
@@ -40,7 +40,6 @@ header {
 
 main {
   background: var(--light-green);
-  animation: fadeIn 0.4s;
   padding: 137px 0 0;
 }
 
@@ -109,15 +108,16 @@ main {
 
 form {
   margin: 2em auto 0;
-  background-color: var(--light-green);
+  background-color: lightblue;
   padding: 1em 1em 2em;
   text-align: center;
 }
 
 dialog {
-  border-color: var(--green);
-  background-color: var(--light-green);
-  width: 65vw;
+  border-color: red;
+  background-color: lightblue;
+  width: 40vw;
+  height: 40vw;
   padding: 2em 1em;
 }
 
