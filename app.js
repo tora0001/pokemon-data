@@ -2,79 +2,15 @@
 
 window.addEventListener("load", initApp);
 
-function initApp() {
-  const thirdBulbasaur = {
-    name: "Bulbasaur",
-    description: "There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger.",
-    ability: "Overgrow",
-    image: "https://img.pokemondb.net/artwork/avif/bulbasaur.avif",
-    footprint: "https://archives.bulbagarden.net/media/upload/d/d1/F0001.png",
-    dexindex: 1,
-    type: "Grass, Poison",
-    subtype: null,
-    weaknesses: "Fire, Psychic, Flying, Ice",
-    gender: "Male or Female",
-    weight: 6900,
-    height: 70,
-    generation: 1,
-    spilversion: "Red/Blue/Yellow/FireRed/LeafGreen",
-    canEvolve: true,
-    statsHP: 45,
-    statsAttack: 49,
-    statsDefence: 49,
-    statsSpecialAttack: 65,
-    statsSpecialDefence: 65,
-    statsSpeed: 45,
-  };
-  const secondBulbasaur = {
-    name: "Bulbasaur",
-    description: "There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger.",
-    ability: "Overgrow",
-    image: "https://img.pokemondb.net/artwork/avif/bulbasaur.avif",
-    footprint: "https://archives.bulbagarden.net/media/upload/d/d1/F0001.png",
-    dexindex: 1,
-    type: "Grass, Poison",
-    subtype: null,
-    weaknesses: "Fire, Psychic, Flying, Ice",
-    gender: "Male or Female",
-    weight: 6900,
-    height: 70,
-    generation: 1,
-    spilversion: "Red/Blue/Yellow/FireRed/LeafGreen",
-    canEvolve: true,
-    statsHP: 45,
-    statsAttack: 49,
-    statsDefence: 49,
-    statsSpecialAttack: 65,
-    statsSpecialDefence: 65,
-    statsSpeed: 45,
-  };
-  const bulbasaur = {
-    name: "Bulbasaur",
-    description: "There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger.",
-    ability: "Overgrow",
-    image: "https://img.pokemondb.net/artwork/avif/bulbasaur.avif",
-    footprint: "https://archives.bulbagarden.net/media/upload/d/d1/F0001.png",
-    dexindex: 1,
-    type: "Grass, Poison",
-    subtype: null,
-    weaknesses: "Fire, Psychic, Flying, Ice",
-    gender: "Male or Female",
-    weight: 6900,
-    height: 70,
-    generation: 1,
-    spilversion: "Red/Blue/Yellow/FireRed/LeafGreen",
-    canEvolve: true,
-    statsHP: 45,
-    statsAttack: 49,
-    statsDefence: 49,
-    statsSpecialAttack: 65,
-    statsSpecialDefence: 65,
-    statsSpeed: 45,
-  };
+async function initApp() {
+  const bulbasaur = await getPokemon("data/pokemon.json");
   showPokemon(bulbasaur);
-  showPokemon(secondBulbasaur);
-  showPokemon(thirdBulbasaur);
+}
+
+async function getPokemon(url) {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
 }
 
 function showPokemon(pokemon) {
