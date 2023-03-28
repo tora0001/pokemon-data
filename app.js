@@ -3,12 +3,13 @@
 window.addEventListener("load", initApp);
 
 async function initApp() {
-  const bulbasaur = await getPokemon("data/pokemon.json");
-  showPokemon(bulbasaur);
+  const pokemon = await getPokemon();
+  pokemon.forEach(showPokemon);
+  showPokemon(pokemon);
 }
 
 async function getPokemon(url) {
-  const response = await fetch(url);
+  const response = await fetch("https://cederdorff.github.io/dat-js/05-data/pokemons.json");
   const data = await response.json();
   return data;
 }
