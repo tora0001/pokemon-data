@@ -24,10 +24,8 @@ function showPokemon(pokemon) {
 
   function pokemonClicked() {
     document.querySelector("#pokemonDetails").showModal();
-    document.querySelector("#pokemonDetails").textContent = pokemon.name;
     const detailHTML = /*html*/ `
   <h1>${pokemon.name}</h1>
-  <img src="${pokemon.image}"></li>
   <h3><i>"${pokemon.description}"</i></h3>
   <li><img src=${pokemon.image}></li>
   <li>Footprint: <img src=${pokemon.footprint}></li>
@@ -52,7 +50,7 @@ function showPokemon(pokemon) {
   <form method="dialog">
 		<button>Close</button>
 </form>`;
-    document.querySelector("#pokemonFacts").insertAdjacentHTML("beforeend", detailHTML);
+    document.querySelector("#pokemonDetails").innerHTML = detailHTML;
   }
   document.querySelector("#pokemon article:last-child").addEventListener("click", pokemonClicked);
 }
