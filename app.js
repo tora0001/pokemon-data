@@ -15,51 +15,49 @@ async function getPokemon(url) {
 }
 
 function showPokemon(pokemon) {
-  const pokemonHTML = /*html*/ `
+  document.querySelector("#pokemon").insertAdjacentHTML(
+    "beforeend",
+    /*html*/ `
   <article class="grid-item">
                 <img src="${pokemon.image}">
                 <h2>${pokemon.name}</h2>
                 <p>${pokemon.type}</p>
-            </article>`;
-  document.querySelector("#pokemon").insertAdjacentHTML("beforeend", pokemonHTML);
+            </article>`
+  );
+
   const evolve = canEvolve(pokemon);
-  const fodspor = footprint(pokemon);
   const undertype = subtype(pokemon);
   const sex = gender(pokemon);
-  const gen = generation(pokemon);
+
+  document.querySelector("#pokemon article:last-child").addEventListener("click", pokemonClicked);
 
   function pokemonClicked() {
     document.querySelector("#pokemonDetails").showModal();
-    document.querySelector("#pokemonDetails").scrollTo(0, 0);
-    const detailHTML = /*html*/ `
-  <h1>${pokemon.name}</h1>
-  <p><img src=${pokemon.image}></p>
-  <h3>"${pokemon.description}"</h3>
-  <li><b>Footprint:</b> ${fodspor}</li>
-  <li><b>Name:</b> ${pokemon.name}</li> 
-  <li><b>Ability:</b> ${pokemon.ability}</li>
-  <li><b>Pokédex index:</b> #${pokemon.dexindex}</li>
-  <li><b>Type:</b> ${pokemon.type}</li>
-  <li><b>Subtype:</b> ${undertype}</li>
-  <li><b>Weaknesses:</b> ${pokemon.weaknesses}</li>
-  <li><b>Gender:</b> ${sex}</li>
-  <li><b>Weight:</b> ${pokemon.weight} g</li>
-  <li><b>Height:</b> ${pokemon.height} cm</li>
-  <li><b>Generation:</b> ${gen}</li>
-  <li><b>Game version:</b> ${pokemon.spilversion}</li>
-  <li><b>Able to evolve:</b> ${evolve}</li>
-  <li><b>HP:</b> ${pokemon.statsHP}</li>
-  <li><b>Attack:</b> ${pokemon.statsAttack}</li>
-  <li><b>Special attack:</b> ${pokemon.statsSpecialAttack}</li>
-  <li><b>Special defence:</b> ${pokemon.statsSpecialDefence}</li>
-  <li><b>Speed:</b> ${pokemon.statsSpeed}</li> 
-  <form method="dialog">
-		<button class="close-button">Back to Pokédex</button>
-</form>`;
-    document.querySelector("#pokemonDetails").innerHTML = detailHTML;
-  }
 
-  document.querySelector("#pokemon article:last-child").addEventListener("click", pokemonClicked);
+    document.querySelector("#pokemonDetails").scrollTo(0, 0);
+
+    document.querySelector("#dialog-name").textContent = pokemon.name;
+    document.querySelector("#dialog-image").src = pokemon.image;
+    document.querySelector("#dialog-description").textContent = pokemon.description;
+    document.querySelector("#dialog-footprint").src = pokemon.footprint;
+    document.querySelector("#dialog-name-2").textContent = pokemon.name;
+    document.querySelector("#dialog-ability").textContent = pokemon.ability;
+    document.querySelector("#dialog-dexindex").textContent = pokemon.dexindex;
+    document.querySelector("#dialog-type").textContent = pokemon.type;
+    document.querySelector("#dialog-undertype").textContent = undertype;
+    document.querySelector("#dialog-weaknesses").textContent = pokemon.weaknesses;
+    document.querySelector("#dialog-gender").textContent = sex;
+    document.querySelector("#dialog-weight").textContent = pokemon.weight;
+    document.querySelector("#dialog-height").textContent = pokemon.height;
+    document.querySelector("#dialog-generation").textContent = pokemon.generation;
+    document.querySelector("#dialog-gameversion").textContent = pokemon.spilversion;
+    document.querySelector("#dialog-evolve").textContent = evolve;
+    document.querySelector("#dialog-hp").textContent = pokemon.statsHP;
+    document.querySelector("#dialog-attack").textContent = pokemon.statsAttack;
+    document.querySelector("#dialog-specialattack").textContent = pokemon.statsSpecialAttack;
+    document.querySelector("#dialog-specialdefence").textContent = pokemon.statsSpecialDefence;
+    document.querySelector("#dialog-speed").textContent = pokemon.statsSpeed;
+  }
 }
 
 function canEvolve(pokemon) {
@@ -71,28 +69,23 @@ function canEvolve(pokemon) {
   }
   return evolve;
 }
-function footprint(pokemon) {
-  if (pokemon.footprint) {
-    return `<img src="${pokemon.footprint}"`;
-  } else {
-    return `${pokemon.name} doesn't have a footprint`;
-  }
-}
+
 function subtype(pokemon) {
-  if (pokemon.subtype === null) return "";
-  else {
+  if (pokemon.subtype === undefined) {
+    return `${pokemon.name} doesn't have a subtype`;
+  } else if (pokemon.subtype === null) {
+    return `${pokemon.name} doesn't have a subtype`;
+  } else {
     return `${pokemon.subtype}`;
   }
 }
+
 function gender(pokemon) {
-  if (pokemon.gender === null) return "no gender";
-  else {
+  if (pokemon.gender === undefined) {
+    return `${pokemon.name} doesn't have a gender`;
+  } else if (pokemon.gender === null) {
+    return `${pokemon.name} doesn't have a gender`;
+  } else {
     return `${pokemon.gender}`;
-  }
-}
-function generation(pokemon) {
-  if (pokemon.generation === null) return "";
-  else {
-    return `${pokemon.generation}`;
   }
 }

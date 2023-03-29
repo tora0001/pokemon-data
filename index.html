@@ -13,8 +13,34 @@
     </header>
     <main>
       <section id="pokemon" class="grid-container"></section>
-      <dialog id="pokemonDetails"></dialog>
     </main>
+    <dialog id="pokemonDetails">
+      <h1 id="dialog-name"></h1>
+      <figure><img id="dialog-image" src="" /></figure>
+      <h3 id="dialog-description"></h3>
+      <ul>
+        <li id="fod"><b>Footprint:</b><img id="dialog-footprint" src="" /></li>
+        <li><b>Name: </b><span id="dialog-name-2"></span></li>
+        <li><b>Ability: </b><span id="dialog-ability"></span></li>
+        <li><b>Pokédex index: #</b><span id="dialog-dexindex"></span></li>
+        <li><b>Type: </b><span id="dialog-type"></span></li>
+        <li><b>Subtype: </b><span id="dialog-undertype"></span></li>
+        <li><b>Weaknesses: </b><span id="dialog-weaknesses"></span></li>
+        <li><b>Gender: </b><span id="dialog-gender"></span></li>
+        <li><b>Weight: </b><span id="dialog-weight"></span> gr</li>
+        <li><b>Height: </b><span id="dialog-height"></span> cm</li>
+        <li><b>Generation: </b><span id="dialog-generation"></span></li>
+        <li><b>Game version: </b><span id="dialog-gameversion"></span></li>
+        <li><b>Able to evolve: </b><span id="dialog-evolve"></span></li>
+        <li><b>HP: </b><span id="dialog-hp"></span></li>
+        <li><b>Attack: </b><span id="dialog-attack"></span></li>
+        <li><b>Special attack: </b><span id="dialog-specialattack"></span></li>
+        <li><b>Special defence: </b><span id="dialog-specialdefence"></span></li>
+        <li><b>Speed: </b><span id="dialog-speed"></span></li>
+        <form method="dialog"><button class="close-button">Back to Pokédex</button></form>
+      </ul>
+    </dialog>
+    <footer class="footer">Pokédex by Tobias Rasmussen</footer>
     <script src="app.js"></script>
   </body>
 </html>
